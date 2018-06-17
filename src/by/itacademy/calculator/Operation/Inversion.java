@@ -1,13 +1,8 @@
-package by.itacademy.calculator.Operation;
+package by.itacademy.calculator.operation;
 
-import java.util.Scanner;
-
-public class Inversion implements Operation {
-    Scanner scanner = new Scanner(System.in);
-    double number = scanner.nextDouble();
-
+public class Inversion extends KeyBoardOperation implements Operation {
     @Override
     public double getResult()  {
-        return (-number);
+        return (-input().read());
     }
 }

@@ -1,23 +1,22 @@
-package by.itacademy.calculator.Operation;
+package by.itacademy.calculator.operation;
 
-import by.itacademy.calculator.Exception.DivisionByZeroException;
-import java.util.Scanner;
+import by.itacademy.calculator.Exceptions.DivisionByZeroException;
+import by.itacademy.calculator.Main;
 
-public class Division implements Operation {
-    Scanner scanner = new Scanner(System.in);
-    double number1 = scanner.nextDouble();
-    double number2 = scanner.nextDouble();
+import java.util.logging.Logger;
+
+public class Division extends KeyBoardOperation implements Operation {
+    Logger logger = Logger.getLogger(Main.class.getName());
 
     @Override
     public double getResult() throws DivisionByZeroException {
         try {
-            if (number2 == 0)
-                throw new DivisionByZeroException("Деление на ноль запрещено");
-            //System.out.println("Деление на ноль");
-        } catch (java.util.InputMismatchException e) {
-            System.out.println("Введите число еще раз");
+            if (input().read() == 0)
+                throw new DivisionByZeroException("division by zero is forbidden");
+        } catch (ArithmeticException e) {
+            logger.info("Exception:" + e);
         }
 
-        return number1 / number2;
+        return input().read()/ input().read();
     }
 }

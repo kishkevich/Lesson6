@@ -1,21 +1,21 @@
-package by.itacademy.calculator.Operation;
+package by.itacademy.calculator.operation;
 
-import java.util.Scanner;
-import by.itacademy.calculator.Exception.NegativeNumberException;
+import by.itacademy.calculator.Main;
+import by.itacademy.calculator.Exceptions.NegativeNumderException;
 
-public class ExtractingRoot implements Operation {
-    Scanner scanner = new Scanner(System.in);
-    double input = scanner.nextDouble();
+import java.util.logging.Logger;
 
+public class ExtractingRoot extends KeyBoardOperation implements Operation {
     @Override
-    public double getResult() throws NegativeNumberException {
-        try {
-            if (input <=0)
-                throw new NegativeNumberException("Извлечение корня из отрицательного числа");
-        } catch (ArithmeticException e){
-            System.err.println("Введите число еще раз");
-        }
+    public double getResult() throws NegativeNumderException {
+        Logger logger = Logger.getLogger(Main.class.getName());
 
-        return Math.sqrt(input);
+        try {
+            if (input().read() <=0)
+                throw new NegativeNumderException("Extracting a root from a negative number");
+        } catch (ArithmeticException e){
+            logger.info("Exception:" + e);
+        }
+        return Math.sqrt(input().read());
     }
 }

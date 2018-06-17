@@ -1,7 +1,6 @@
-package by.itacademy.calculator.Exception;
+package by.itacademy.calculator.Exceptions;
 
 public class DivisionByZeroException extends Exception {
-
     public DivisionByZeroException (String message){
         super (message);
     }
